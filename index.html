@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1> Cờ Caro</h1>
+<p id="board"></p>
+<input type="button" onclick="createBoard()" id="choi" value="Click Me!"><br><br>
+<input type="button" onclick="clickCell()" value="Play">
+<script>
+    let arr = [1, 2, 3, 4, 5];
+    let board = [];
+    let turn = 1;
+    function createBoard() {
+        for (let i = 0; i < arr.length; i++) {
+            board[i] = [];
+            for (let j = 0; j < arr.length; j++) {
+                board[i][j] = 0;
+            }
+        }
+        display();
+    }
+    function display() {
+        let str = "";
+        for (let i = 0; i < arr.length; i++) {
+            for (let j = 0; j < arr.length; j++) {
+                str += (board[i][j] + "&nbsp;&nbsp;");
+            }
+            str += ("<br>");
+        }
+        document.getElementById("board").innerHTML = str;
+    }
+    function clickCell() {
+        let x = +prompt(" Nhap X: ");
+        let y = +prompt(" Nhap Y: ");
+        if (board[x][y] == 0) {
+            if (turn == 1) {
+                board[x][y] = "x";
+                turn = 2;
+            } else {
+                board[x][y] = "A";
+                turn = 1;
+            }
+        } else {
+            alert("False");
+        }
+        display();
+    }
+    </script>
+</body>
+</html>
